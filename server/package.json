@@ -1,0 +1,24 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "source/server.ts",
+  "scripts": {
+    "build": "rm -rf build && prettier --write source/ && tsc",
+    "start": "nodemon source/server.ts"
+  },
+  "author": "Okcen",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "rm": "^0.1.8"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.19.0",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.12"
+  }
+}
