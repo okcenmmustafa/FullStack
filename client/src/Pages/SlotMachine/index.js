@@ -5,8 +5,10 @@ import getValues from "../../api";
 import { rollingPrice, ballance } from "../../actions/slotMachine/user";
 import { RiCoinsFill } from "react-icons/ri";
 import { Statistic, Row, Col } from "antd";
-
+import Notifications from '../../Components/Notifications'
 const slotRef = [createRef(), createRef(), createRef()];
+
+// Reels deafult defination
 const defaultProps = [
   {
     fruits: ["🍒", "🍋", "🍎", "🍋", "🍌", "🍌", "🍋", "🍋"],
@@ -19,13 +21,14 @@ const defaultProps = [
   },
 ];
 const SlotMachine = (props) => {
+  
   const [fruits, setFruits] = useState({
     0: "",
     1: "",
     2: "",
   });
   const [rolling, setRolling] = useState(false);
-
+  const [awardCoins,setAwardCoins]=useState(0);
   const coins = useSelector((state) => state.slotMachine.coins);
   const status = useSelector((state) => state.slotMachine.status);
 
@@ -33,6 +36,8 @@ const SlotMachine = (props) => {
 
   useEffect(() => {
     (async () => {
+
+        // fething result of slot Machine after
       if (!rolling) {
         const values = await getValues("POST", "/slotMachineResult", {
           coins: coins,
@@ -41,11 +46,13 @@ const SlotMachine = (props) => {
           fruit3: fruits[2],
         });
         dispatch(ballance(values.awardCoin));
-      }
+        setAwardCoins(values.awardCoin)
+              }
     })();
   }, [rolling]);
-  const roll = (props) => {
-    console.log(coins);
+
+  // Rolling algorithm 
+  const roll = () => {
     setRolling(true);
     dispatch(rollingPrice());
 
@@ -59,6 +66,8 @@ const SlotMachine = (props) => {
       setRolling(false);
     }, 700);
   };
+
+  // Rolling rells random variables , detect rells value and show it  
   const triggerSlotRotation = (ref) => {
     function setTop(top) {
       ref.style.top = `${top}px`;
@@ -74,8 +83,9 @@ const SlotMachine = (props) => {
 
   return (
     <>
-      <div class="col-xl-6 col-xxl-12 col-lg-12 col-xxl-6 center">
+      <div className="col-xl-6 col-xxl-12 col-lg-12 col-xxl-6 center">
         <div>
+        <Notifications awardCoins={awardCoins}></Notifications>
           <div className="site-statistic-demo-card">
             <Row gutter={16}>
               <Col span={20}>
@@ -102,6 +112,8 @@ const SlotMachine = (props) => {
         <div className="SlotMachine">
           <div className="slot">
             <section>
+
+              {/* Rells definations */}
               <div className="container" id="0" ref={slotRef[0]}>
                 {defaultProps[0].fruits.map((fruit, i) => (
                   <div key={i}>
@@ -114,8 +126,8 @@ const SlotMachine = (props) => {
           <div className="slot">
             <section>
               <div className="container" id="1" ref={slotRef[1]}>
-                {defaultProps[1].fruits.map((fruit) => (
-                  <div>
+                {defaultProps[1].fruits.map((fruit,i) => (
+                  <div key={i}>
                     <span>{fruit}</span>
                   </div>
                 ))}
@@ -125,8 +137,8 @@ const SlotMachine = (props) => {
           <div className="slot">
             <section>
               <div className="container" id="2" ref={slotRef[2]}>
-                {defaultProps[2].fruits.map((fruit) => (
-                  <div>
+                {defaultProps[2].fruits.map((fruit,i) => (
+                  <div key={i}>
                     <span>{fruit}</span>
                   </div>
                 ))}
@@ -142,6 +154,22 @@ const SlotMachine = (props) => {
               {rolling ? "Rolling..." : "ROLL"}
             </button>
           </div>
+
+          {/* Informations about the game  */}
+
+          <Row style={{marginTop:"100px"}}>
+            <Col  span={17} >
+          <p>🍒 🍒 🍒 = <strong>50</strong> coins</p>
+          <p>🍎 🍎 🍎 = <strong>20</strong> coins</p>
+          <p>🍌 🍌 🍌 = <strong>15</strong> coins</p>
+          <p>🍋 🍋 🍋 = <strong>3</strong> coins</p>
+          </Col>
+          <Col>
+          <p>🍒 🍒 = <strong>40</strong> coins</p>
+          <p>🍎 🍎  = <strong>10</strong> coins</p>
+          <p>🍌 🍌  = <strong>5</strong> coins</p>
+          </Col>
+          </Row>
         </div>
       </div>
     </>

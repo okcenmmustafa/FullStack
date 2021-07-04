@@ -1,8 +1,7 @@
 const axios = require("axios");
-//restApi used in requests
+// used for all  requests
 export default async function getValues(method, apiURL, params) {
   const api = process.env.REACT_APP_API_URL;
-  console.log(api);
   const response = await axios({
     method: method,
     url: api + apiURL,
@@ -10,7 +9,6 @@ export default async function getValues(method, apiURL, params) {
     params: params,
   })
     .then((res) => {
-      console.log(res.data);
       return res.data;
     })
     .catch((error) => {

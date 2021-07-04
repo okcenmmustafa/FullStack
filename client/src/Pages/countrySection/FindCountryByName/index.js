@@ -6,11 +6,18 @@ import currency from "currency.js";
 import Table from "../../../Components/Table";
 import { dataSource } from "../../../Components/Table";
 import getValues from "../../../api";
+import CountryInfoFunc from "../../../helper";
 const FindCountryByName = (props) => {
   var list = [];
   useEffect(() => {
+
+    //  the function for the reload page
     props.fethCountryRequest(1);
+
+    //  the Strings defined in an Array in App.js
     props.countryArray.map(async (country, i) => {
+
+      // fetch countries
       const getCountry = await getValues("post", "/country", {
         name: country,
         id: 1,
@@ -21,38 +28,10 @@ const FindCountryByName = (props) => {
     });
   }, []);
 
-  function CountryInfoFunc() {
-    let countryInfo = props.arrayResult;
-    if (!countryInfo.lengh) dataSource.length = 0;
-    countryInfo.map((insideArray, i) => {
-      insideArray.map((country, j) => {
-        let population = currency(country.population, {
-          precision: 0,
-          symbol: "",
-        }).format();
-        let flag = <Image width={100} src={country.flag} />;
-        dataSource.push({
-          key: `${i}${j}`,
-          flag: flag,
-          name: country.name,
-          capital: country.capital,
-          region: country.region,
-          population: population, // => "12,34,567.89"
-        });
-      });
-    });
-    return (
-      <Table
-        title={
-          'Find Country in Array -- "Malta", "France", "Tur", "Norway", "Argentina" (You can change array in App.js)'
-        }
-        sizee="small"
-        dataSource={dataSource}
-      />
-    );
-  }
+  // putting the fethed data in the table 
+  
   return (
-    <>{props.loading && props.id == "1" ? "Loading" : CountryInfoFunc()}</>
+    <>{props.loading && props.id == "1" ? "Loading" : CountryInfoFunc(props.arrayResult, 'Find Country in Array -- "Malta", "France", "Tur", "Norway", "Argentina" (You can change array in App.js)',1)}</>
   );
 };
 

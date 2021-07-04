@@ -7,10 +7,15 @@ const DataSchema = () => {
   return (
     <div className="container mx-auto p-4">
       <div className="demo">
+
+       {/* // Image of Schema of Database  */}
+
         <h1>Schema of the Database</h1>
         <Image width={1000} src="./Images/DataSchema.jpg" />
         <br />
         <h1>SQL to Create Database</h1>
+        
+       {/* // Database creation code  */}
         <CopyBlock
           language="SQL"
           text={`
@@ -58,6 +63,9 @@ const DataSchema = () => {
           codeBlock
         />
         <br />
+               {/* // SQL query to get all players that have games of type “SLOT” as their
+          favorite games  */}
+
         <h1>
           SQL query to get all players that have games of type “SLOT” as their
           favorite games

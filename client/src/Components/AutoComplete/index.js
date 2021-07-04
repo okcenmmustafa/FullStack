@@ -9,14 +9,8 @@ import {
 } from "../../actions/country";
 const { Search } = Input;
 
-const suffix = (
-  <AudioOutlined
-    style={{
-      fontSize: 16,
-      color: "#1890ff",
-    }}
-  />
-);
+
+//sending a request after click enter or search button
 
 const onSearch = async (value, props) => {
   props.fethCountryRequest(props.id);
@@ -26,12 +20,14 @@ const onSearch = async (value, props) => {
   });
   props.searchSpecificNameResult(countryInfo.data);
 };
+
+//Search component in Question 1 
+
 const SearchComp = (props) => {
-  console.log(props);
   return (
     <>
       <Search
-        placeholder="Text a country name and presss enter"
+        placeholder="Enter a country name and press enter or click search "
         allowClear
         enterButton="Search"
         size="large"

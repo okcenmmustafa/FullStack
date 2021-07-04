@@ -10,55 +10,12 @@ class TableComp extends React.Component {
     dataSource: dataSource,
     nameSearch: "",
   };
-
-  getColumnSearchProps = (dataIndex) => ({
-    filterDropdown: ({
-      setSelectedKeys,
-      selectedKeys,
-      confirm,
-      clearFilters,
-    }) => (
-      <div style={{ padding: 8 }}>
-        <Input
-          placeholder={`Search ${dataIndex}`}
-          //value={selectedKeys[0]}
-          onChange={(e) =>
-            setSelectedKeys(e.target.value ? [e.target.value] : [])
-          }
-          onPressEnter={() => this.handleSearch(selectedKeys, confirm)}
-          style={{ width: 188, marginBottom: 8, display: "block" }}
-        />
-      </div>
-    ),
-
-    onFilter: (value, record) =>
-      record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
-    onFilterDropdownVisibleChange: (visible) => {
-      if (visible) {
-        setTimeout(() => this.searchInput.select());
-      }
-    },
-    render: (text) => (
-      <Highlighter
-        highlightStyle={{ backgroundColor: "#ffc069", padding: 0 }}
-        searchWords={[this.state.sRT]}
-        autoEscape
-        textToHighlight={text.toString()}
-      />
-    ),
-  });
-
-  handleSearch = (selectedKeys, confirm) => {
-    confirm();
-    this.setState({ sRT: selectedKeys[0] });
-  };
-
-  handleReset = (clearFilters) => {
-    clearFilters();
-    this.setState({ sRT: "" });
-  };
+ 
 
   render() {
+
+    // colums for table 
+
     const columns = [
       {
         title: "Flag",
@@ -69,11 +26,32 @@ class TableComp extends React.Component {
         title: "Name",
         dataIndex: "name",
         key: "name",
+        wdith:"100px"
+      },
+      {
+        title: "Native Name",
+        dataIndex: "nativeName",
+        key: "nativeName",
       },
       {
         title: "Capital",
         dataIndex: "capital",
         key: "capital",
+      },
+      {
+        title: "Languages",
+        dataIndex: "languages",
+        key: "languages",
+      },
+      {
+        title: "Currencies",
+        dataIndex: "currencies",
+        key: "currencies",
+      },
+      {
+        title: "Calling Code",
+        dataIndex: "callingCodes",
+        key: "callingCodes",
       },
       {
         title: "Region",
@@ -92,6 +70,9 @@ class TableComp extends React.Component {
     return (
       <div>
         <Row>
+
+          {/* for filter by name in Question 3 */ }
+
           {this.props.id == "3" ? (
             <AutoComplete
               dataSource={dataSource.map((person) => person.name)}
@@ -102,6 +83,7 @@ class TableComp extends React.Component {
                   ),
                 })
               }
+              placeholder="Enter a country name. Begin with a capital letter "
               style={{ width: "100%" }}
               defaultOpen={false}
               open={false}
@@ -111,6 +93,8 @@ class TableComp extends React.Component {
           )}
         </Row>
         <Row>
+
+          {/* for rendering the table component */}
           <Table
             title={() => this.props.title}
             columns={columns}
