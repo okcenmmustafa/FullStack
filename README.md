@@ -1,4 +1,4 @@
-# FullStack
+# Full Stack Dev Task For Kanon
 
 #### Setup Project
 
