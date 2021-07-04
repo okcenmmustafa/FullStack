@@ -13,3 +13,7 @@ If the batch fails, run `client.bat` and `server.bat` in 'start' folder to start
 
 #### Task description
 `React.js` used for frontend  and `Node.js` for backend.
+
+
+#### Video
+https://https://www.youtube.com/watch?v=kjL-cEqkE6o
