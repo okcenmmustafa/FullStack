@@ -57,7 +57,7 @@ export default function CountryInfoFunc(requestedData,title,id) {
     return (
       <>
         <TableComp
-          title={()=>title}
+          title={title}
           id={id}
           getColumnSearchProps={"name"}
           dataSource={dataSource}
