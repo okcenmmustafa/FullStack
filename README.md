@@ -16,4 +16,4 @@ If the batch fails, run `client.bat` and `server.bat` in 'start' folder to start
 
 
 #### Video
-https://https://www.youtube.com/watch?v=kjL-cEqkE6o
+https://www.youtube.com/watch?v=kjL-cEqkE6o
