@@ -17,7 +17,7 @@ const FindCountryByFilter = (props) => {
   // putting the fethed data in the table 
   
   return (
-    <> {props.loading && props.id === "3" ? "Loading" : CountryInfoFunc(props.filterResult,"Find by Filter Name",3)}</>
+    <> {props.loading && props.id ===3 ? "Loading" : CountryInfoFunc(props.filterResult,"Find by Filter Name",3)}</>
   );
 };
 export default FindCountryByFilter;

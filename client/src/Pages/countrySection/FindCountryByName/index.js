@@ -17,7 +17,7 @@ const FindCountryByName = (props) => {
         id: 1,
       });
       list.push(getCountry.data);
-      if (list.length === props.countryArray.length)
+      if (list.length == props.countryArray.length)
         props.searchArrayResult(list);
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -26,7 +26,7 @@ const FindCountryByName = (props) => {
   // putting the fethed data in the table 
   
   return (
-    <>{props.loading && props.id === "1" ? "Loading" : CountryInfoFunc(props.arrayResult, 'Find Country in Array -- "Malta", "France", "Tur", "Norway", "Argentina" (You can change array in App.js)',1)}</>
+    <>{props.loading && props.id === 1 ? "Loading" : CountryInfoFunc(props.arrayResult, 'Find Country in Array -- "Malta", "France", "Tur", "Norway", "Argentina" (You can change array in App.js)',1)}</>
   );
 };
 

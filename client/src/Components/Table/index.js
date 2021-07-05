@@ -72,7 +72,7 @@ class TableComp extends React.Component {
 
           {/* for filter by name in Question 3 */ }
 
-          {this.props.id === "3" ? (
+          {this.props.id === 3? (
             <AutoComplete
               dataSource={dataSource.map((person) => person.name)}
               onChange={(nameSearch) =>
