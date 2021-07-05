@@ -17,7 +17,7 @@ const FindCountryByName = (props) => {
         id: 1,
       });
       list.push(getCountry.data);
-      if (list.length == props.countryArray.length)
+      if (list.length === props.countryArray.length)
         props.searchArrayResult(list);
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
