@@ -1,7 +1,6 @@
 import React from "react";
 import "antd/dist/antd.css";
-import { Table, Input, Row, Typography, AutoComplete, Col } from "antd";
-import Highlighter from "react-highlight-words";
+import { Table,  Row, AutoComplete } from "antd";
 export const dataSource = [];
 
 class TableComp extends React.Component {
@@ -73,7 +72,7 @@ class TableComp extends React.Component {
 
           {/* for filter by name in Question 3 */ }
 
-          {this.props.id == "3" ? (
+          {this.props.id === "3" ? (
             <AutoComplete
               dataSource={dataSource.map((person) => person.name)}
               onChange={(nameSearch) =>

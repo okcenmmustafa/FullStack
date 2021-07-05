@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { Tabs } from "antd";
 import FindCountryBySpecificName from "./Pages/countrySection/FindCountryBySpecificName";

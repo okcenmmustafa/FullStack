@@ -1,10 +1,4 @@
-import AutoComplete from "../../../Components/AutoComplete";
 import React, { useEffect } from "react";
-import { Image, Row, Col } from "antd";
-import { connect } from "react-redux";
-import currency from "currency.js";
-import Table from "../../../Components/Table";
-import { dataSource } from "../../../Components/Table";
 import getValues from "../../../api";
 import CountryInfoFunc from '../../../helper'
 const FindCountryByFilter = (props) => {
@@ -17,12 +11,13 @@ const FindCountryByFilter = (props) => {
       const allCountries = await getValues("get", "/allCountry");
       props.filterCountryResult(allCountries.data);
     })();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // putting the fethed data in the table 
   
   return (
-    <> {props.loading && props.id == "3" ? "Loading" : CountryInfoFunc(props.filterResult,"Find by Filter Name",3)}</>
+    <> {props.loading && props.id === "3" ? "Loading" : CountryInfoFunc(props.filterResult,"Find by Filter Name",3)}</>
   );
 };
 export default FindCountryByFilter;

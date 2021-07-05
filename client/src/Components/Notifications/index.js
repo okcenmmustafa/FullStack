@@ -1,5 +1,5 @@
 import {  notification } from 'antd';
-import React,{useEffect} from 'react';
+import {useEffect} from 'react';
 const openNotificationWithIcon = (type,coins) => {
   notification[type]({
     message: 'Coin Earned',

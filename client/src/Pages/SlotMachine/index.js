@@ -1,6 +1,6 @@
 import React, { useEffect, useState, createRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { ArrowUpOutlined, ArrowDownOutlined } from "@ant-design/icons";
+import { ArrowUpOutlined } from "@ant-design/icons";
 import getValues from "../../api";
 import { rollingPrice, ballance } from "../../actions/slotMachine/user";
 import { RiCoinsFill } from "react-icons/ri";
@@ -49,6 +49,7 @@ const SlotMachine = (props) => {
         setAwardCoins(values.awardCoin)
               }
     })();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rolling]);
 
   // Rolling algorithm 

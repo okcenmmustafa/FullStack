@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { CopyBlock, dracula } from "react-code-blocks";
 import { Image } from "antd";
 const DataSchema = () => {
-  const [language, changeLanguage] = useState("jsx");
-  const [lineNumbers, toggleLineNumbers] = useState(true);
+  const lineNumbers=true;
   return (
     <div className="container mx-auto p-4">
       <div className="demo">
@@ -53,7 +52,7 @@ const DataSchema = () => {
                                                                                                         \`id\` INT(11) NOT NULL AUTO_INCREMENT,
                                                                                                         \`PlayerId\` INT(11) NOT NULL,
                                                                                                         \`GameId\` INT(11),
-                                                                                                        PRIMARY KEY (\`id\`,\`PlayerId\,\`GameId\`)
+                                                                                                        PRIMARY KEY (\`id\`,\`PlayerId\`,\`GameId\`)
         );
           
                   `}

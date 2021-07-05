@@ -5,8 +5,10 @@ import currency from "currency.js";
 export default function CountryInfoFunc(requestedData,title,id) {
     let countryInfo =requestedData;
     if (!countryInfo.lengh) dataSource.length = 0;
-    if(id==1)
+    if(id===1)
+      // eslint-disable-next-line array-callback-return
       countryInfo.map((insideArray, i) => {
+        // eslint-disable-next-line array-callback-return
         insideArray.map((country, j) => {
   
           //calculate population
@@ -22,9 +24,9 @@ export default function CountryInfoFunc(requestedData,title,id) {
             flag: flag,
             name: country.name, // sample result = "malta"
             nativeName:country.nativeName, // sample result = "Malta"
-            languages:country.languages.map((language,i)=>i==0?`${language.name}`:`, ${language.name}`), // sample result = "Maltese, English"
+            languages:country.languages.map((language,i)=>i===0?`${language.name}`:`, ${language.name}`), // sample result = "Maltese, English"
             capital: country.capital,  // sample result = "Valetta"
-            currencies:country.currencies.map((currency,i)=>i==0?`${currency.name}`:`, ${currency.name}`),  // sample result = "Euro"
+            currencies:country.currencies.map((currency,i)=>i===0?`${currency.name}`:`, ${currency.name}`),  // sample result = "Euro"
             callingCodes:`+${country.callingCodes}`,  // sample result = "+356"
             region: country.region, // sample result = "Europe"
             population: population, // sample result = "425,384"
@@ -32,6 +34,7 @@ export default function CountryInfoFunc(requestedData,title,id) {
         });
       });
     else
+    // eslint-disable-next-line array-callback-return
     countryInfo.map((country, i) => {
      //calculate population
      let population = currency(country.population, {
@@ -46,9 +49,9 @@ export default function CountryInfoFunc(requestedData,title,id) {
         flag: flag,
         name: country.name, // sample result = "malta"
         nativeName:country.nativeName, // sample result = "Malta"
-        languages:country.languages.map((language,i)=>i==0?`${language.name}`:`, ${language.name}`), // sample result = "Maltese, English"
+        languages:country.languages.map((language,i)=>i===0?`${language.name}`:`, ${language.name}`), // sample result = "Maltese, English"
         capital: country.capital,  // sample result = "Valetta"
-        currencies:country.currencies.map((currency,i)=>i==0?`${currency.name}`:`, ${currency.name}`),  // sample result = "Euro"
+        currencies:country.currencies.map((currency,i)=>i===0?`${currency.name}`:`, ${currency.name}`),  // sample result = "Euro"
         callingCodes:`+${country.callingCodes}`,  // sample result = "+356"
         region: country.region, // sample result = "Europe"
         population: population, // sample result = "425,384"
