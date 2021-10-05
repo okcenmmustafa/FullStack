@@ -1,5 +1,3 @@
-# Full Stack Dev Task For Kanon
-
 #### Setup Project
 
 Open 'install' folder and run `install.bat`
